@@ -84,7 +84,7 @@ dependencies {
 
 tasks {
     withType<Jar> {
-        baseName = "${project.name}"
+        baseName = project.name
         manifest {
             attributes["Main-Class"] = application.mainClassName
         }
