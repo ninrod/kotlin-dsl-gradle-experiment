@@ -31,7 +31,6 @@ buildscript {
 }
 
 plugins {
-    java
     application
 }
 apply(plugin = "kotlin")
