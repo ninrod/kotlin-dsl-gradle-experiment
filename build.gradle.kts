@@ -4,6 +4,8 @@ import org.ninrod.backend.build.*
 buildscript {
     val artifactory = "http://artifactory/artifactory/gradle"
     repositories {
+        // BUG HERE: I have to use the full qualified name of the doWeHaveToUseArtifactory
+        // because the buildScript block does not respect the top level defined imports!
         if (org.ninrod.backend.build.doWeHaveToUseArtifactory()) {
             println("configuring artifactory for plugin repos")
             maven {
@@ -18,6 +20,8 @@ buildscript {
         }
     }
     dependencies {
+        // BUG HERE: I have to use the full qualified name of the doWeHaveToUseArtifactory
+        // because the buildScript block does not respect the top level defined imports!
         if (org.ninrod.backend.build.doWeHaveToUseArtifactory()) {
             println("we are going to add the classpath of the org.jfrog.buildinfo plugin")
             classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.9.0")
