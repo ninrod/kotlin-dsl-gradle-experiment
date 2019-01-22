@@ -1,6 +1,7 @@
 import org.gradle.jvm.tasks.Jar
 import org.ninrod.backend.build.*
 
+// this block fetches properties from gradle.properties
 val artifactory_contextUrl: String by project
 val artifactory_gradle: String by project
 val kotlin_version: String by project
@@ -16,6 +17,7 @@ buildscript {
         if (org.ninrod.backend.build.doWeHaveToUseArtifactory()) {
             println("configuring artifactory for plugin repos")
             maven {
+                // sadly, we have to redeclare the artifactory_gradle variagble, else it does not work
                 val artifactory_gradle: String by project
                 url = uri(artifactory_gradle)
             }
@@ -34,6 +36,7 @@ buildscript {
             println("we are going to add the classpath of the org.jfrog.buildinfo plugin")
             classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.9.0")
         }
+        // sadly, we have to redeclare the kotlin_version variagble here, else it does not work
         val kotlin_version: String by project
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
