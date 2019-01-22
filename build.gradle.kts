@@ -2,15 +2,16 @@ import org.gradle.jvm.tasks.Jar
 import org.ninrod.backend.build.*
 
 buildscript {
+    // sadly, we have to import our values inside buildscript because this block does not get anything from outside
     val artifactory_gradle: String by project
     val kotlin_version: String by project
+
     repositories {
         // BUG HERE: I have to use the full qualified name of the doWeHaveToUseArtifactory
         // because the buildScript block does not respect the top level defined imports!
         if (org.ninrod.backend.build.doWeHaveToUseArtifactory()) {
             println("configuring artifactory for plugin repos")
             maven {
-                // sadly, we have to redeclare the artifactory_gradle variagble, else it does not work
                 url = uri(artifactory_gradle)
             }
         } else {
@@ -28,7 +29,6 @@ buildscript {
             println("we are going to add the classpath of the org.jfrog.buildinfo plugin")
             classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.9.0")
         }
-        // sadly, we have to redeclare the kotlin_version variagble here, else it does not work
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }
