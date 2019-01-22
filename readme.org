@@ -1,0 +1,32 @@
+* Kotlin Backend
+
+- toy project to try out kotlin as a backend language
+
+** building
+#+BEGIN_SRC shell
+
+# if you don't have a running postgresql container, spin up one:
+$ make db
+
+# first, build the backend
+$ cd backend && gradle build
+
+# now build the frontend
+$ cd frontend && yarn && yarn build
+
+#+END_SRC
+
+** running
+#+BEGIN_SRC shell
+$ make
+# then open your brower on http://localhost:4200
+#+END_SRC
+
+* LICENSE
+- [[https://www.gnu.org/licenses/gpl-3.0.en.html][GNU General Public License v3]]
+#+BEGIN_SRC text
+GNU General Public License v3
+Copyright (c) 2015-2018 Filipe Silva (ninrod)
+#+END_SRC
+
+
