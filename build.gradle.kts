@@ -30,11 +30,11 @@ buildscript {
     }
 }
 
+apply(plugin = "kotlin")
+apply(plugin = "com.jfrog.artifactory")
 plugins {
     application
 }
-apply(plugin = "kotlin")
-apply(plugin = "com.jfrog.artifactory")
 
 application {
     mainClassName = "org.ninrod.backend.EntrypointKt"
@@ -45,7 +45,6 @@ configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
-
 
 allprojects {
     repositories {
