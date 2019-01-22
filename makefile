@@ -18,3 +18,8 @@ db:
 logsdb:
 	docker logs -f db
 
+pristine:
+	git clean -fdx
+
+run:
+	DATABASE_ADDRESS=db java -jar build/libs/backend-0.0.1.jar
