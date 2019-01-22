@@ -1,6 +1,6 @@
-* Kotlin Backend
+* kotlin dsl gradle experiment
 
-- toy project to try out kotlin as a backend language
+- toy project to experiment with the new kotlin dsl for gradle builds
 
 ** building
 #+BEGIN_SRC shell

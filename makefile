@@ -1,4 +1,4 @@
-.PHONY: db backend
+.PHONY: db backend build
 
 up:
 	docker-compose up -d
@@ -14,3 +14,6 @@ db:
 
 logsdb:
 	docker logs -f db
+
+build:
+	gradle build
