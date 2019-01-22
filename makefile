@@ -23,3 +23,5 @@ pristine:
 
 test:
 	DATABASE_ADDRESS=db java -jar build/libs/backend-0.0.1.jar
+
+full: pristine build test
