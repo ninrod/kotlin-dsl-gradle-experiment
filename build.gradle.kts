@@ -82,7 +82,7 @@ dependencies {
 }
 
 tasks {
-    withType<Jar> {
+    "jar"(Jar::class) {
         baseName = project.name
         manifest {
             attributes["Main-Class"] = application.mainClassName
