@@ -1,3 +1,0 @@
-* frontend
-
-- simple angular frontend to connect to the kotlin backend
