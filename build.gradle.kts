@@ -1,4 +1,5 @@
 import org.gradle.jvm.tasks.Jar
+import org.ninrod.backend.build.hello
 
 buildscript {
     val artifactory = "http://artifactory/artifactory/gradle"
@@ -92,6 +93,7 @@ tasks {
 
     val greeting by creating {
         println("CONFIGURATION PHASE!!!")
+        println(hello())
         doLast {
             println("EXECUTION PHASE!!!")
         }
