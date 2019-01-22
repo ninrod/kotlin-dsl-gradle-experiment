@@ -1,4 +1,4 @@
-package org.ninrod.blog
+package org.ninrod.backend
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
