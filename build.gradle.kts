@@ -106,13 +106,13 @@ tasks {
             val answer: String by project
             println("The $label = $answer.")
 
-            println("$artifactory_contextUrl")
-            println("$artifactory_gradle")
-            println("$kotlin_version")
-            println("$exposed_version")
-            println("$junit5_version")
-            println("$postgresql_driver_version")
-            println("$springboot_version")
+            println("artifactory_gradle = $artifactory_gradle")
+            println("artifactory_contextUrl = $artifactory_contextUrl")
+            println("kotlin_version = $kotlin_version")
+            println("exposed_version = $exposed_version")
+            println("junit5_version = $junit5_version")
+            println("postgresql_driver_version = $postgresql_driver_version")
+            println("springboot_version = $springboot_version")
         }
     }
 }
