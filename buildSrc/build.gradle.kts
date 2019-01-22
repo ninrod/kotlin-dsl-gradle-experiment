@@ -7,16 +7,16 @@ buildscript {
     }
     repositories {
         if (doWeHaveToUseArtifactory()) {
-            println("configuring artifactory for plugin repos")
+            println("buildSrc: configuring artifactory for plugin repos")
             maven {
                 url = uri(artifactory)
             }
         } else {
-            println("we are using mavencentral for plugins")
+            println("buildSrc: we are using jcenter for plugins")
             maven {
-                mavenCentral()
-                jcenter()
+                url = uri("https://plugins.gradle.org/m2/")
             }
+            jcenter()
         }
     }
     dependencies {
@@ -43,7 +43,10 @@ repositories {
             url = uri(artifactory)
         }
     } else {
-        mavenCentral()
+        println("buildSrc: we are using jcenter for plugins")
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
         jcenter()
     }
 }
