@@ -7,7 +7,7 @@ val kotlin_version: String by project
 val exposed_version: String by project
 val junit5_version: String by project
 val postgresql_driver_version: String by project
-val springboot_version: String by project
+val spring_transaction_version: String by project
 
 buildscript {
     repositories {
@@ -69,12 +69,12 @@ repositories {
 
 dependencies {
     // kotlin
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.11")
-    compile("org.jetbrains.kotlin:kotlin-reflect:1.3.11")
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
+    compile("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
 
     // db
-    compile("org.jetbrains.exposed:exposed:0.11.2")
-    compile("org.jetbrains.exposed:spring-transaction:0.11.2")
+    compile("org.jetbrains.exposed:exposed:$exposed_version")
+    compile("org.jetbrains.exposed:spring-transaction:$exposed_version")
     compile("org.postgresql:postgresql:42.2.5")
 
 
@@ -113,7 +113,6 @@ tasks {
             println("exposed_version = $exposed_version")
             println("junit5_version = $junit5_version")
             println("postgresql_driver_version = $postgresql_driver_version")
-            println("springboot_version = $springboot_version")
         }
     }
 }
