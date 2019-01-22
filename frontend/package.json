@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --proxy-config proxy-intellij.conf.json --poll",
     "stub": "run-p json-server serve-stub",
-    "deploy": "bash ../scripts/frontend-deploy.sh",
     "serve-stub": "ng serve --host 0.0.0.0 --proxy-config proxy.conf.json --poll",
     "json-server": "cp initial-json-server.db.json json-server.db.json && node json-server.js",
     "build": "ng build --prod --aot",
