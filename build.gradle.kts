@@ -46,17 +46,15 @@ configure<JavaPluginConvention> {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-allprojects {
-    repositories {
-        val artifactory = "http://artifactory/artifactory/gradle"
-        if (doWeHaveToUseArtifactory()) {
-            maven {
-                url = uri(artifactory)
-            }
-        } else {
-            mavenCentral()
-            jcenter()
+repositories {
+    val artifactory = "http://artifactory/artifactory/gradle"
+    if (doWeHaveToUseArtifactory()) {
+        maven {
+            url = uri(artifactory)
         }
+    } else {
+        mavenCentral()
+        jcenter()
     }
 }
 
