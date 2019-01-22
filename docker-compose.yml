@@ -4,10 +4,12 @@ networks:
    name: workbench_subnet
 services:
 
-  chess-backend:
+  backend:
     image: openjdk:11.0.1
     depends_on:
       - db
+    environment:
+      - DATABASE_ADDRESS=db
     container_name: backend
     networks:
       - internal-net
