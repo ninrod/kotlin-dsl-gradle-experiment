@@ -8,18 +8,18 @@
 # if you don't have a running postgresql container, spin up one:
 $ make db
 
-# first, build the backend
-$ cd backend && gradle build
-
-# now build the frontend
-$ cd frontend && yarn && yarn build
+# build the backend
+$ make
 
 #+END_SRC
 
 ** running
 #+BEGIN_SRC shell
-$ make
-# then open your brower on http://localhost:4200
+# spin up the backend
+$ make up
+
+# hit the endpoint
+$ curl localhost:8080
 #+END_SRC
 
 * LICENSE
