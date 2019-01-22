@@ -2,8 +2,6 @@ import org.gradle.jvm.tasks.Jar
 import org.ninrod.backend.build.*
 
 // this block fetches properties from gradle.properties
-val artifactory_contextUrl: String by project
-val artifactory_gradle: String by project
 val kotlin_version: String by project
 val exposed_version: String by project
 val junit5_version: String by project
@@ -11,6 +9,8 @@ val postgresql_driver_version: String by project
 val spring_transaction_version: String by project
 
 buildscript {
+    val artifactory_gradle: String by project
+    val kotlin_version: String by project
     repositories {
         // BUG HERE: I have to use the full qualified name of the doWeHaveToUseArtifactory
         // because the buildScript block does not respect the top level defined imports!
@@ -18,7 +18,6 @@ buildscript {
             println("configuring artifactory for plugin repos")
             maven {
                 // sadly, we have to redeclare the artifactory_gradle variagble, else it does not work
-                val artifactory_gradle: String by project
                 url = uri(artifactory_gradle)
             }
         } else {
@@ -37,7 +36,6 @@ buildscript {
             classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.9.0")
         }
         // sadly, we have to redeclare the kotlin_version variagble here, else it does not work
-        val kotlin_version: String by project
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }
@@ -71,6 +69,7 @@ repositories {
 }
 
 dependencies {
+
     // kotlin
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
     compile("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
@@ -105,6 +104,8 @@ tasks {
     }
 
     val compute by creating {
+        val artifactory_gradle: String by project
+        val artifactory_contextUrl: String by project
         doLast {
             val label: String by project
             val answer: String by project
