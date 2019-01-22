@@ -75,12 +75,12 @@ dependencies {
     // db
     compile("org.jetbrains.exposed:exposed:$exposed_version")
     compile("org.jetbrains.exposed:spring-transaction:$exposed_version")
-    compile("org.postgresql:postgresql:42.2.5")
+    compile("org.postgresql:postgresql:$postgresql_driver_version")
 
 
     // tests
-    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.2")
+    testCompile("org.junit.jupiter:junit-jupiter-api:$junit5_version")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit5_version")
 }
 
 tasks {
