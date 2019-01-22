@@ -1,15 +1,10 @@
 import org.gradle.jvm.tasks.Jar
-import org.ninrod.backend.build.hello
+import org.ninrod.backend.build.*
 
 buildscript {
     val artifactory = "http://artifactory/artifactory/gradle"
-    fun doWeHaveToUseArtifactory(): Boolean {
-        val centos = File("/etc/centos-release").exists()
-        val workbench = File("/etc/hostname").readText().trim() == "workbench"
-        return centos && workbench
-    }
     repositories {
-        if (doWeHaveToUseArtifactory()) {
+        if (org.ninrod.backend.build.doWeHaveToUseArtifactory()) {
             println("configuring artifactory for plugin repos")
             maven {
                 url = uri(artifactory)
@@ -23,7 +18,7 @@ buildscript {
         }
     }
     dependencies {
-        if (doWeHaveToUseArtifactory()) {
+        if (org.ninrod.backend.build.doWeHaveToUseArtifactory()) {
             println("we are going to add the classpath of the org.jfrog.buildinfo plugin")
             classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.9.0")
         }
@@ -50,11 +45,6 @@ configure<JavaPluginConvention> {
 allprojects {
     repositories {
         val artifactory = "http://artifactory/artifactory/gradle"
-        fun doWeHaveToUseArtifactory(): Boolean {
-            val centos = File("/etc/centos-release").exists()
-            val workbench = File("/etc/hostname").readText().trim() == "workbench"
-            return centos && workbench
-        }
         if (doWeHaveToUseArtifactory()) {
             maven {
                 url = uri(artifactory)
@@ -91,9 +81,10 @@ tasks {
         from( configurations.runtime.get().map { if (it.isDirectory) it else zipTree(it) })
     }
 
-    val greeting by creating {
+    val dump by creating {
         println("CONFIGURATION PHASE!!!")
         println(hello())
+        println("temos que usar artifactory? " + doWeHaveToUseArtifactory())
         doLast {
             println("EXECUTION PHASE!!!")
         }
