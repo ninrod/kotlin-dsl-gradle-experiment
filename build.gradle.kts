@@ -1,6 +1,14 @@
 import org.gradle.jvm.tasks.Jar
 import org.ninrod.backend.build.*
 
+val artifactory_contextUrl: String by project
+val artifactory_gradle: String by project
+val kotlin_version: String by project
+val exposed_version: String by project
+val junit5_version: String by project
+val postgresql_driver_version: String by project
+val springboot_version: String by project
+
 buildscript {
     val artifactory = "http://artifactory/artifactory/gradle"
     repositories {
@@ -97,14 +105,6 @@ tasks {
             val label: String by project
             val answer: String by project
             println("The $label = $answer.")
-
-            val artifactory_contextUrl: String by project
-            val artifactory_gradle: String by project
-            val kotlin_version: String by project
-            val exposed_version: String by project
-            val junit5_version: String by project
-            val postgresql_driver_version: String by project
-            val springboot_version: String by project
 
             println("$artifactory_contextUrl")
             println("$artifactory_gradle")
