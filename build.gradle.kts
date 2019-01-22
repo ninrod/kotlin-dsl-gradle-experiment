@@ -1,5 +1,5 @@
 import org.gradle.jvm.tasks.Jar
-import org.ninrod.backend.buildconf.*
+import org.ninrod.backend.build.*
 
 buildscript {
     val artifactory = "http://artifactory/artifactory/gradle"
