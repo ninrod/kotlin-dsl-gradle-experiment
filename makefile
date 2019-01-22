@@ -10,7 +10,7 @@ down:
 	docker-compose down && docker-compose rm
 
 backend:
-	docker-compose up -d chess-backend
+	docker-compose up -d backend
 
 db:
 	docker-compose up -d db
