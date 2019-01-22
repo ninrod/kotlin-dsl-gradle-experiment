@@ -30,16 +30,23 @@ buildscript {
     }
 }
 
+plugins {
+    java
+    application
+}
 apply(plugin = "java-library")
-apply(plugin = "application")
 apply(plugin = "kotlin")
 apply(plugin = "com.jfrog.artifactory")
 
+application {
+    mainClassName = "org.ninrod.backend.EntrypointKt"
+}
 
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
+
 
 allprojects {
     repositories {
@@ -82,6 +89,7 @@ tasks {
             attributes(mapOf("Main-Class" to "org.ninrod.backend.EntrypointKt"))
         }
         archiveName = "backend-0.0.1.jar"
-        from( configurations.runtime.get().map { if (it.isDirectory) it else zipTree(it) })
+        from( configurations.compile.get().map { if (it.isDirectory) it else zipTree(it) })
+        // from( configurations.runtime.get().map { if (it.isDirectory) it else zipTree(it) })
     }
 }
