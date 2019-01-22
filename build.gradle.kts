@@ -89,4 +89,11 @@ tasks {
         }
         from( configurations.runtime.get().map { if (it.isDirectory) it else zipTree(it) })
     }
+
+    val greeting by creating {
+        println("CONFIGURATION PHASE!!!")
+        doLast {
+            println("EXECUTION PHASE!!!")
+        }
+    }
 }
