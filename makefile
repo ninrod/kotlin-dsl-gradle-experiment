@@ -21,5 +21,5 @@ logsdb:
 pristine:
 	git clean -fdx
 
-run:
+test:
 	DATABASE_ADDRESS=db java -jar build/libs/backend-0.0.1.jar
