@@ -31,21 +31,19 @@ buildscript {
 apply(plugin = "org.gradle.kotlin.kotlin-dsl")
 
 
-allprojects {
-    repositories {
-        val artifactory = "http://artifactory/artifactory/gradle"
-        fun doWeHaveToUseArtifactory(): Boolean {
-            val centos = File("/etc/centos-release").exists()
-            val workbench = File("/etc/hostname").readText().trim() == "workbench"
-            return centos && workbench
+repositories {
+    val artifactory = "http://artifactory/artifactory/gradle"
+    fun doWeHaveToUseArtifactory(): Boolean {
+        val centos = File("/etc/centos-release").exists()
+        val workbench = File("/etc/hostname").readText().trim() == "workbench"
+        return centos && workbench
+    }
+    if (doWeHaveToUseArtifactory()) {
+        maven {
+            url = uri(artifactory)
         }
-        if (doWeHaveToUseArtifactory()) {
-            maven {
-                url = uri(artifactory)
-            }
-        } else {
-            mavenCentral()
-            jcenter()
-        }
+    } else {
+        mavenCentral()
+        jcenter()
     }
 }
