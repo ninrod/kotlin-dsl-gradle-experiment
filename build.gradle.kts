@@ -34,7 +34,6 @@ plugins {
     java
     application
 }
-apply(plugin = "java-library")
 apply(plugin = "kotlin")
 apply(plugin = "com.jfrog.artifactory")
 
