@@ -91,4 +91,12 @@ tasks {
             println("EXECUTION PHASE!!!")
         }
     }
+
+    val compute by creating {
+        doLast {
+            val label: String by project
+            val answer: String by project
+            println("The $label = $answer.")
+        }
+    }
 }
