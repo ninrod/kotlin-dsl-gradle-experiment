@@ -34,7 +34,8 @@ buildscript {
             println("we are going to add the classpath of the org.jfrog.buildinfo plugin")
             classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.9.0")
         }
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.11")
+        val kotlin_version: String by project
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }
 
