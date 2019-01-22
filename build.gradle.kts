@@ -1,13 +1,6 @@
 import org.gradle.jvm.tasks.Jar
 import org.ninrod.backend.build.*
 
-// this block fetches properties from gradle.properties
-val kotlin_version: String by project
-val exposed_version: String by project
-val junit5_version: String by project
-val postgresql_driver_version: String by project
-val spring_transaction_version: String by project
-
 buildscript {
     val artifactory_gradle: String by project
     val kotlin_version: String by project
@@ -70,6 +63,12 @@ repositories {
 
 dependencies {
 
+    // this block fetches properties from gradle.properties
+    val kotlin_version: String by project
+    val exposed_version: String by project
+    val junit5_version: String by project
+    val postgresql_driver_version: String by project
+
     // kotlin
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
     compile("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
@@ -100,23 +99,6 @@ tasks {
         println("temos que usar artifactory? " + doWeHaveToUseArtifactory())
         doLast {
             println("EXECUTION PHASE!!!")
-        }
-    }
-
-    val compute by creating {
-        val artifactory_gradle: String by project
-        val artifactory_contextUrl: String by project
-        doLast {
-            val label: String by project
-            val answer: String by project
-            println("The $label = $answer.")
-
-            println("artifactory_gradle = $artifactory_gradle")
-            println("artifactory_contextUrl = $artifactory_contextUrl")
-            println("kotlin_version = $kotlin_version")
-            println("exposed_version = $exposed_version")
-            println("junit5_version = $junit5_version")
-            println("postgresql_driver_version = $postgresql_driver_version")
         }
     }
 }

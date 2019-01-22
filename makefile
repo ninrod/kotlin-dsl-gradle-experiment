@@ -22,6 +22,6 @@ pristine:
 	git clean -fdx
 
 test:
-	DATABASE_ADDRESS=db java -jar build/libs/backend-0.0.1.jar; gradle compute; gradle dump
+	DATABASE_ADDRESS=db java -jar build/libs/backend-0.0.1.jar; gradle dump
 
 full: pristine build test
