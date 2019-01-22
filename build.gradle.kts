@@ -68,27 +68,26 @@ allprojects {
 
 dependencies {
     // kotlin
-    "implementation"("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.11")
-    "implementation"("org.jetbrains.kotlin:kotlin-reflect:1.3.11")
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.11")
+    compile("org.jetbrains.kotlin:kotlin-reflect:1.3.11")
 
     // db
-    "implementation"("org.jetbrains.exposed:exposed:0.11.2")
-    "implementation"("org.jetbrains.exposed:spring-transaction:0.11.2")
-    "implementation"("org.postgresql:postgresql:42.2.5")
+    compile("org.jetbrains.exposed:exposed:0.11.2")
+    compile("org.jetbrains.exposed:spring-transaction:0.11.2")
+    compile("org.postgresql:postgresql:42.2.5")
 
 
     // tests
-    "testImplementation"("org.junit.jupiter:junit-jupiter-api:5.3.2")
-    "testImplementation"("org.junit.jupiter:junit-jupiter-engine:5.3.2")
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.2")
 }
 
 tasks {
     withType<Jar> {
         manifest {
-            attributes(mapOf("Main-Class" to "org.ninrod.backend.EntrypointKt"))
+            attributes["Main-Class"] = application.mainClassName
         }
         archiveName = "backend-0.0.1.jar"
-        from( configurations.compile.get().map { if (it.isDirectory) it else zipTree(it) })
-        // from( configurations.runtime.get().map { if (it.isDirectory) it else zipTree(it) })
+        from( configurations.runtime.get().map { if (it.isDirectory) it else zipTree(it) })
     }
 }
