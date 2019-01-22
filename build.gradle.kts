@@ -38,6 +38,7 @@ apply(plugin = "com.jfrog.artifactory")
 
 application {
     mainClassName = "org.ninrod.backend.EntrypointKt"
+    version = "0.0.1"
 }
 
 configure<JavaPluginConvention> {
@@ -83,10 +84,10 @@ dependencies {
 
 tasks {
     withType<Jar> {
+        baseName = "${project.name}"
         manifest {
             attributes["Main-Class"] = application.mainClassName
         }
-        archiveName = "backend-0.0.1.jar"
         from( configurations.runtime.get().map { if (it.isDirectory) it else zipTree(it) })
     }
 }
