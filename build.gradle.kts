@@ -93,7 +93,7 @@ tasks {
         from( configurations.runtime.get().map { if (it.isDirectory) it else zipTree(it) })
     }
 
-    val dump by creating {
+    val dumpTest by creating {
         println("CONFIGURATION PHASE!!!")
         println(hello())
         println("temos que usar artifactory? " + doWeHaveToUseArtifactory())
